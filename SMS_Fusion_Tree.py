@@ -23,8 +23,7 @@ class Node:
 
         self.keys_max = max_keys
         if max_keys != None:
-            # an extra space is assigned so that splitting can be
-            # done easily
+            # an extra space is assigned so that splitting can be done easily
             self.keys = [None for i in range(max_keys + 1)]
             self.children = [None for i in range(max_keys + 2)]
 
@@ -170,7 +169,6 @@ class FusionTree:
         node.key_count += 1
 
     def insert_notsplitting(self, node, k):
-        # print(node, node.keys,'\n', node.key_count)
         # insert k into node when no chance of splitting the root
         if node != None and node.isLeaf:
             i = node.key_count
@@ -273,13 +271,11 @@ class FusionTree:
         
         if position == 0:
             position += 1
-            # x = node.keys[position]
         
         # find the common prefix
         # it can be guranteed that successor of k is successor
         # of next smallest element in subtree
         x = max(node.keys[position - 1][0], node.keys[position][0])
-        # print("x = ", x)
         common_prefix = 0
         i = self.w
         while i >= 0 and (x & (1 << i)) == (k & (1 << i)):
@@ -295,10 +291,7 @@ class FusionTree:
         temp = common_prefix | (1 << i)
 
         position = self.parallelComp(node, temp)
-        # if position == 0:
-        # possible error?
-        #     position += 1
-        # print("position = ", position, bin(temp))
+    
         if node.isLeaf:
             return node.keys[position]
         else:
@@ -308,16 +301,6 @@ class FusionTree:
             else:
                 return fin
 
-    # def successorSimple(self, node, k):
-    #     i = 0
-    #     while i < node.key_count and k > node.keys[i][0]:
-    #         i += 1
-    #     if i < node.key_count and k > node.keys[i][0]:
-    #         return node.keys[i]
-    #     elif node.isLeaf:
-    #         return node.keys[i]
-    #     else:
-    #         return self.successor(k, node.children[i])
 
     def predecessor(self, k, node = None):
         if node == None:
@@ -403,146 +386,5 @@ class FusionTree:
 
 
 
-# if __name__ == "__main__":
-#     # create a fusion tree of degree 3
-#     tree = FusionTree(243)
-#     f = open("cars.csv", encoding='cp850')
-#     f.readline()
-#     f_tree_length = 0
-#     for i in f:
-#         i = i.split(",")
-#         lst = [word.strip() for word in i]
-#         lst = [int(lst[0])] + lst[1:6] + [int(lst[6])] + lst[7:10] +  [float(lst[10])]
-#         tree.insert(lst)
-#         f_tree_length += 1
-#     f.close()
-#     print("Tree length " + str(f_tree_length))
-#     tree.initiateTree()
-
-#     ############ FOR LESS THAN and EQUAL TO VALUES (Price and Year) ####################
-#     manufacturer = ""
-#     price = -1
-#     year = 2020
-#     output_lst= []
-
-#     for i in range(1, f_tree_length):
-#         lst = tree.predecessor(i)
-#         # print(lst)
-#         if len(output_lst) > 0:
-#             if lst != output_lst[-1]:
-#                 if manufacturer != "":
-#                     if price != -1:
-#                         if year != -1:
-#                             if lst[1] == manufacturer and lst[10] <= price and lst[6] <= year:
-#                                 output_lst.append(lst)
-#                         elif lst[1] == manufacturer and lst[10] <= price:
-#                             output_lst.append(lst)
-#                     elif lst[1] == manufacturer and lst[6] <= year:
-#                         output_lst.append(lst)
-#                     elif lst[1] == manufacturer and price == -1 and year == -1:
-#                         output_lst.append(lst)
-#                 elif price != -1 :
-#                     if year != -1:
-#                         if lst[10] <= price and lst[6] <= year:
-#                             output_lst.append(lst)
-#                     elif lst[10] <= price:
-#                         output_lst.append(lst)
-#                 elif year != -1:
-#                     if lst[6] <= year:
-#                         output_lst.append(lst)
-#         else:
-#             if manufacturer != "":
-#                 if price != -1:
-#                     if year != -1:
-#                         if lst[1] == manufacturer and lst[10] <= price and lst[6] <= year:
-#                             output_lst.append(lst)
-#                 elif lst[1] == manufacturer and lst[10] <= price:
-#                     output_lst.append(lst)
-#                 elif lst[1] == manufacturer and lst[6] <= year:
-#                     output_lst.append(lst)
-#                 elif lst[1] == manufacturer and price == -1 and year == -1:
-#                     output_lst.append(lst)
-#             elif price != -1:
-#                 if year != -1:
-#                     if lst[6] <= year and lst[10] <= price:
-#                         output_lst.append(lst)
-#                 elif lst[10] <= price:
-#                     output_lst.append(lst)
-#             elif year != -1:
-#                 if lst[6] <= year:
-#                     output_lst.append(lst)
-#     print(output_lst)
 
 
-############# FOR GREATER THAN and EQUAL TO VALUES (Price and Year) ####################
-
-    # for i in range(1, f_tree_length):
-    #     lst = tree.successor(i)
-    #     # print(lst)
-    #     if len(output_lst) > 0:
-    #         if lst != output_lst[-1]:
-    #             if manufacturer != "":
-    #                 if price != "":
-    #                     if year != "":
-    #                         if lst[1] == manufacturer and lst[10] >= price and lst[6] >= year:
-    #                             output_lst.append(lst)
-    #                     elif lst[1] == manufacturer and lst[10] >= price:
-    #                         output_lst.append(lst)
-    #                 elif lst[1] == manufacturer and lst[6] >= year:
-    #                     output_lst.append(lst)
-    #                 elif lst[1] == manufacturer and price == -1 and year == -1:
-    #                     output_lst.append(lst)
-    #             elif price != "" :
-    #                 if year != "":
-    #                     if lst[10] >= price and lst[6] >= year:
-    #                         output_lst.append(lst)
-    #                 elif lst[10] >= price:
-    #                     output_lst.append(lst)
-    #             elif year != "":
-    #                 if lst[6] >= year:
-    #                     output_lst.append(lst)
-    #     else:
-    #         if manufacturer != "":
-    #             if price != "":
-    #                 if year != "":
-    #                     if lst[1] == manufacturer and lst[10] >= price and lst[6] >= year:
-    #                         output_lst.append(lst)
-    #             elif lst[1] == manufacturer and lst[10] >= price:
-    #                 output_lst.append(lst)
-    #             elif lst[1] == manufacturer and lst[6] >= year:
-    #                 output_lst.append(lst)
-    #             elif lst[1] == manufacturer and price == -1 and year == -1:
-    #                 output_lst.append(lst)
-    #         elif price != "":
-    #             if year != "":
-    #                 if lst[6] >= year and lst[10] >= price:
-    #                     output_lst.append(lst)
-    #             elif lst[10] >= price:
-    #                 output_lst.append(lst)
-    #         elif year != "":
-    #             if lst[6] >= year:
-    #                 output_lst.append(lst)                
-# print(output_lst[-1])
-    
-    
-
-##    print(tree.root.keys)
-##    for i in tree.root.children:
-##        if i is not None:
-##             print (i, " = ", i.keys)
-##             if not i.isLeaf:
-##                 for j in i.children:
-##                     if j is not None:
-##                         print(j.keys)
-#     # the tree formed should be like:
-#     #      [| 5  | |  16 |]
-#     #      /      |       \
-#     #     /       |        \
-#     # [1, 4]     [15]     [20, 25]
-#     # print("\nKeys stored are:")
-    # print("Predecessors:")
-    # for i in range(26):
-    #     print(i, "------------------->", tree.predecessor(i), sep = '\t')
-    # print("Successor:")
-    # for i in range(26):
-    #     print(i, "------------------->", tree.successor(i), sep = '\t')
