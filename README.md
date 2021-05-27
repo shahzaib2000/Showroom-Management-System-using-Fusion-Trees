@@ -9,8 +9,10 @@ Run Command Prompt in your PC
 
 **Step 2:**
 Run the following commands one by one and wait for them to install:
-pip install kivy
-pip install pandas
+
+**pip install kivy**
+
+**pip install pandas**
 
 
 **Important Note**
