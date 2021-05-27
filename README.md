@@ -22,8 +22,11 @@ A point to note here is that we tested our application on the latest version of 
 **Project Team:**
 
 Shahzaib Amir
+
 Muhammad Saad
+
 Abdullah Fareed
+
 Muhammad Ibrahim
 
 
