@@ -2,7 +2,7 @@
 
 **Installing different modules**
 
-We have to have pandas and kivy installed on the system to run our application. We need to follow some steps which are as follows:
+You have to have pandas and kivy installed on the system to run our application. We need to follow some steps which are as follows:
 **Step 1:**
 Run Command Prompt in your PC
 
