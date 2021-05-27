@@ -15,7 +15,8 @@ Run the following commands one by one and wait for them to install:
 **pip install pandas**
 
 
-**Important Note**
+**Important Note:**
+
 A point to note here is that we tested our application on the latest version of Python 3.9 but it does not work due to some Python library issues. Therefore, our application would work on the Python versions 3.8 or lower.
 
 
