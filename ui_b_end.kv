@@ -16,7 +16,7 @@ WindowManager:
         GridLayout:
             canvas.before:
                 Color:
-                    rgba: (1, 0.2, 0, .5)     # 50% translucent orange red
+                    rgba: (1, 0.2, 0, .5)
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -37,26 +37,9 @@ WindowManager:
                     pos: self.pos
                     size: self.size
 
-            # GridLayout:
-            #     canvas.before:
-            #         Color:
-            #             rgba: (1, 0.2, 0, .5)     # 50% translucent orange red
-            #         Rectangle:
-            #             pos: self.pos
-            #             size: self.size
-
-            #     id: headings_col
-            #     size_hint: 1, None
-            #     size_hint_y: None
-            #     height: 25
-            #     cols: 11
-
-
             RV:
-                # id: recyc_view
                 id: rv
                 viewclass: 'Label'
-                # data: self.ilist
                 SelectableRecycleGridLayout:
                     cols: 11
                     key_selection: 'selectable'
@@ -66,78 +49,3 @@ WindowManager:
                     height: self.minimum_height
                     multiselect: True
                     touch_multiselect: True
-
-                
-                # RecycleBoxLayout:
-                #     cols: 11
-                #     default_size: None, dp(56)
-                #     default_size_hint: 1, None
-                #     size_hint_y: None
-                #     height: self.minimum_height
-                #     orientation: 'vertical'
-
-# WindowManager:
-#     MainWindow:  #Our main data Window
-
-
-# <MainWindow>:
-#     name: "data_management"
-#     # headings_col: headings_col
-#     BoxLayout:
-#         orientation: 'vertical'
-#         BoxLayout:
-#             size_hint: 1, 0.3
-#             id: c_layout
-#             orientation: 'vertical'
-        
-#         # GridLayout:
-#         #     canvas.before:
-#         #         Color:
-#         #             rgba: (1, 0.2, 0, .5)     # 50% translucent orange red
-#         #         Rectangle:
-#         #             pos: self.pos
-#         #             size: self.size
-
-#         #     id: headings_col
-#         #     size_hint: 1, None
-#         #     size_hint_y: None
-#         #     height: 25
-#         #     cols: 11
-
-#         # DataSetManage:
-#         #     # headings_col: headings_col
-#         #     orientation: 'vertical'
-
-#         #     GridLayout:
-#         #         canvas.before:
-#         #             Color:
-#         #                 rgba: (1, 0.2, 0, 0.5)
-#         #             Rectangle:
-#         #                 pos: self.pos
-#         #                 size: self.size
-#         #         id: headings_col
-#         #         size_hint: 1, None
-#         #         size_hint_y: None
-#         #         height: 25
-#         #         cols: 10
-
-#         BoxLayout:
-#             canvas.before:
-#                 Color:
-#                     rgba: (.0, 0.9, .1, .3)
-#                 Rectangle:
-#                     pos: self.pos
-#                     size: self.size
-
-#             RecycleView:
-#                 viewclass: 'SelectableButton'
-#                 data: root.data_set
-#                 SelectableRecycleGridLayout:
-#                     cols: 11
-#                     key_selection: 'selectable'
-#                     default_size: None, dp(26)
-#                     default_size_hint: 1, None
-#                     size_hint_y: None
-#                     height: self.minimum_height
-#                     multiselect: True
-#                     touch_multiselect: True 
