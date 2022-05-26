@@ -25,9 +25,7 @@ Shahzaib Amir
 
 Muhammad Saad
 
-Abdullah Fareed
 
-Muhammad Ibrahim
 
 
 
